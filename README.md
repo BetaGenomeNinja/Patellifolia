@@ -14,7 +14,12 @@ AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT
 ```
 02_Alignment_to_Referance
 -
+```
+module load bowtie2/2.2.3
+bowtie2 -q --phred33-quals -k 2 -x genome.fa -1 input_R1.fastq -2 input_R2.fastq -S output.sam
 
+
+```
 
 
 
