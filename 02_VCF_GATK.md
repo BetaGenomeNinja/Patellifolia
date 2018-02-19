@@ -1,5 +1,4 @@
-# VCF GATK
--
+# VCF from GATK
 Starts with bam files (BWA,bowtie2,etc...)
 ```
 module load picardtools
