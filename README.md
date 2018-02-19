@@ -30,14 +30,28 @@ samtools view -b -S -o out.bam input.sam
 -
 ```
 module load SAMTools/0.1.18
-samtools sort /mnt/ls15/scratch/users/galewski/CROP/04_SNP_CROP_TYPE_1/03_SAM_to_BAM.out/0_C869_7_ATCACG_pe_bowtie.out.bam /mnt/ls15/scratch/users/galewski/CROP/04_SNP_CROP_TYPE_1/04_bam_sort.out/0_C869_7_ATCACG_pe.bam.sorted
+samtools sort out.bam out.bam.sorted
 ```
 
 05_BamMerge
 -
 ```
 module load SAMTools/0.1.18
-samtools merge /mnt/ls15/scratch/users/galewski/CROP/04_SNP_CROP_TYPE_1/05_bam_merge.out/0_C869_7_ATCACG_pe.bam.merged /mnt/ls15/scratch/users/galewski/CROP/04_SNP_CROP_TYPE_1/04_bam_sort.out/0_C869_7_ATCACG_pe.bam.sorted.bam /mnt/ls15/scratch/users/galewski/CROP/04_SNP_CROP_TYPE_1/04_bam_sort.out/0_C869_7_ATCACG__se.bam.sorted.bam
+samtools merge out.bam.merged 1.bam.sorted.bam 2.sorted.bam
+```
+
+06_bcf
+-
+```
+module load SAMTools/0.1.18
+samtools mpileup -uf genome/EL10byChromosome.fasta out.bam.merged | bcftools view -bvcg - > out.bcf
+```
+
+07_vcf
+-
+```
+module load SAMTools/0.1.18
+bcftools view out.bcf | vcfutils.pl varFilter -D100 > out.vcf
 ```
 
 
