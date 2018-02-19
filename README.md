@@ -1,6 +1,4 @@
-# README.md 
-Patellifolia Sequencing
--
+# README.md Patellifolia Sequencing
 01_Read_Processing_Trimmomatic
 -
   The raw reads were downloaded from admera. Reads were cleaned using trimmomatic, passing the appropriate adapter sequence for               trimming.
